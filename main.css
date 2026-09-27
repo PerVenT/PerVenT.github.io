@@ -53,6 +53,25 @@ p{margin:0 0 1rem}
 .lnk{align-self:flex-start;margin-top:auto;padding-top:.5rem;font-weight:500;border-bottom:1px solid transparent;transition:color .2s}
 .lnk:hover{color:var(--c)}
 
+/* ---------- Certificates: same card language as Projects, preview thumbnail on the right ---------- */
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));gap:1rem;margin:0;padding:0;list-style:none}
+.certs li{display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;padding:1.4rem;border:1px solid var(--ln);border-left:3px solid var(--c);border-radius:.6rem;background:var(--card);transition:border-color .2s}
+.certs li:hover{border-color:var(--c)}
+.certs .ci{flex:1;min-width:12rem}
+.certs h3{font-family:var(--mono);color:var(--c);font-size:1.4rem;letter-spacing:.02em;margin:0 0 .2rem}
+.certs .co{margin:0 0 .7rem;color:var(--mut);font-size:.85rem}
+.certs .meta{display:grid;grid-template-columns:auto 1fr;gap:.2rem .75rem;margin:0 0 .7rem;font-size:.85rem}
+.certs .meta dt,.certs .meta dd{margin:0}
+.certs .meta dt{color:var(--mut)}
+.certs .meta dd{font-family:var(--mono)}
+.certs .ac{margin:0;font-weight:500}
+.certs .ac a{border-bottom:1px solid transparent;transition:color .2s}
+.certs .ac a:hover{color:var(--c)}
+.certs .th{position:relative;flex:none;width:5.5rem;aspect-ratio:3/4;border-radius:.5rem;overflow:hidden;display:grid;place-items:center;background:linear-gradient(135deg,var(--c),var(--bg2));color:var(--onb);font:700 1.3rem var(--mono);transition:transform .2s}
+.certs .th:hover{transform:scale(1.05)}
+.certs .th::before{content:attr(data-i)}
+.certs .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
 /* ---------- Experience: a real sequence, so a timeline ---------- */
 .tl{margin:0;padding:0 0 0 1.5rem;list-style:none;border-left:2px solid var(--ln)}
 .tl li{position:relative;padding:0 0 2.25rem 1rem}
