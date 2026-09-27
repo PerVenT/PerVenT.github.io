@@ -1,0 +1,88 @@
+/* main.css - below-the-fold styles, loaded after first paint.
+   Theme variables, hero, stars, theme switch and top nav are inlined in index.html (critical CSS). */
+
+/* ---------- Landing sheet: a curved panel that slides over the hero ---------- */
+.sheet{position:relative;margin-top:-3.5rem;padding-top:4rem;border-radius:50% 50% 0 0/3.5rem 3.5rem 0 0;box-shadow:0 -1.5rem 3rem #0003;
+background:radial-gradient(var(--ln) 1px,#0000 1.5px) 0 0/28px 28px,var(--bg2)}
+
+[data-theme=light] .sheet{box-shadow:0 -1rem 2.5rem #0000000d}
+
+/* Hero content fades away as the sheet rises (progressive enhancement) */
+@supports (animation-timeline:scroll()){
+.hero-in{animation:out linear both;animation-timeline:scroll(root);animation-range:0 75vh}
+@keyframes out{to{opacity:0;transform:translateY(-3rem) scale(.97)}}
+}
+
+/* ---------- Layout ---------- */
+.w{width:100%;max-width:62rem;margin:0 auto;padding:0 1.25rem}
+.sec{padding:3.25rem 0;scroll-margin-top:3.5rem}
+h2{margin:0 0 2rem;font-size:clamp(1.9rem,5vw,2.75rem);line-height:1.15;letter-spacing:-.02em}
+h2::before{content:"# ";color:var(--c);font-family:var(--mono);font-weight:400}
+h3{margin:0;font-size:1.1rem}
+p{margin:0 0 1rem}
+
+/* One calm reveal per section (only when JS + IntersectionObserver are available) */
+.js .sec .w{opacity:0;translate:0 1.75rem;transition:opacity .8s ease,translate .8s cubic-bezier(.2,.7,.2,1)}
+.js .sec .w.in{opacity:1;translate:none}
+
+/* ---------- About ---------- */
+.abt{display:grid;grid-template-columns:1.3fr 1fr;gap:2.5rem;align-items:start}
+.abt p{color:var(--mut);font-size:1.08rem;max-width:34rem}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem 1.25rem;margin:0;padding:0;list-style:none;color:var(--mut);font-size:.9rem}
+.facts li{padding-left:1rem;border-left:2px solid var(--c)}
+.facts li:nth-child(2){border-color:var(--g)}
+.facts li:nth-child(3){border-color:var(--b)}
+.facts li:nth-child(4){border-color:var(--p)}
+.facts b{display:block;color:var(--fg);font:600 1.9rem/1.2 var(--mono)}
+
+/* ---------- Skills: a plain key / value table, not cards ---------- */
+.sk{margin:0}
+.sk>div{display:grid;grid-template-columns:13rem 1fr;gap:.5rem 1.5rem;padding:1.1rem 0;border-top:1px solid var(--ln)}
+.sk>div:last-child{border-bottom:1px solid var(--ln)}
+.sk dt{font:600 .95rem var(--mono);color:var(--c)}
+.sk dd{margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+.tags li{padding:.15rem .6rem;border:1px solid var(--ln);border-radius:.4rem;background:var(--card);font:.8rem var(--mono);color:var(--fg)}
+
+/* ---------- Projects ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:1rem}
+.grid article{display:flex;flex-direction:column;gap:.75rem;padding:1.4rem;border:1px solid var(--ln);border-left:3px solid var(--c);border-radius:.6rem;background:var(--card);transition:border-color .2s}
+.grid article:hover{border-color:var(--c)}
+.grid h3{font-family:var(--mono);color:var(--c)}
+.grid p{margin:0;color:var(--mut)}
+.lnk{align-self:flex-start;margin-top:auto;padding-top:.5rem;font-weight:500;border-bottom:1px solid transparent;transition:color .2s}
+.lnk:hover{color:var(--c)}
+
+/* ---------- Experience: a real sequence, so a timeline ---------- */
+.tl{margin:0;padding:0 0 0 1.5rem;list-style:none;border-left:2px solid var(--ln)}
+.tl li{position:relative;padding:0 0 2.25rem 1rem}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:calc(-1.5rem - 7px);top:.4rem;width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px var(--bg2)}
+.tl time{font:.85rem var(--mono);color:var(--c)}
+.tl h3{margin:.1rem 0 0}
+.tl .co{margin:0 0 .4rem;font-weight:500}
+.tl li>p:last-child{margin:0;color:var(--mut);max-width:38rem}
+
+/* ---------- Contact ---------- */
+.ct{margin:0;padding:0;list-style:none}
+.ct li:last-child{border-bottom:1px solid var(--ln)}
+.ct li{border-top:1px solid var(--ln)}
+.ct a{display:flex;align-items:center;gap:1.1rem;padding:1.2rem 0;transition:color .2s,padding-left .25s}
+.ct a:hover{color:var(--c);padding-left:.6rem}
+.ct .ic{flex:none;width:1.9rem;height:1.9rem;color:var(--c)}
+.ct b{min-width:6.5rem;font-size:1.1rem}
+.ct span{color:var(--mut);font:.9rem var(--mono);overflow-wrap:anywhere}
+
+/* ---------- Footer ---------- */
+footer{padding:3rem 1.25rem 2.5rem;text-align:center;color:var(--mut);font-size:.9rem}
+footer p{margin:0}
+footer a:hover{color:var(--y)}
+
+/* ---------- Small screens ---------- */
+@media(max-width:44rem){
+.abt{grid-template-columns:1fr;gap:2rem}
+.sk>div{grid-template-columns:1fr}
+.sheet{margin-top:-2.5rem;border-radius:50% 50% 0 0/2.5rem 2.5rem 0 0}
+.ct a{flex-wrap:wrap;gap:.25rem 1rem}
+.ct span{flex-basis:100%;padding-left:calc(1.9rem + 1rem)}
+}
